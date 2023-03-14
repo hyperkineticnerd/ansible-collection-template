@@ -1,0 +1,19 @@
+name: molecule-lint
+# run-name: Ansible Molecule Linting
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  molecule-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          path: "${{ github.repository }}"
+
+      - name: molecule
+        uses: hyperkineticnerd/github-action-molecule@master
+        with:
+          command: lint

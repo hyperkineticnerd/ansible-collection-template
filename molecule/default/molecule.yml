@@ -1,0 +1,20 @@
+---
+dependency:
+  name: galaxy
+  enabled: True
+  options:
+    role-file: requirements.yml
+    requirements-file: requirements.yml
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: registry.access.redhat.com/ubi9/ubi
+    pre_build_image: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
+lint: |
+  set -e
+  ansible-lint
